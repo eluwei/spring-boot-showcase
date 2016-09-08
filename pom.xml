@@ -18,8 +18,8 @@
 
     <modules>
         <module>boot-showcase-service</module>
-        <module>boot-showcase-web</module>
         <module>boot-showcase-api</module>
+        <module>boot-showcase-web</module>
     </modules>
     <packaging>pom</packaging>
 

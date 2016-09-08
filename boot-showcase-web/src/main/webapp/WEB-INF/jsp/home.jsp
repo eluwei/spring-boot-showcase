@@ -23,9 +23,9 @@
     <td>已使用金额</td>
     <td>余额</td>
     <td>备注</td>
-    <td>快捷操作</td>
   </tr>
-  <c:forEach var="card" items="cards">
+
+  <c:forEach var="card" items="${cards}">
       <tr>
         <td>${card.id}</td>
         <td>${card.cardId}</td>
@@ -35,7 +35,7 @@
         <td>${card.comments}</td>
       </tr>
   </c:forEach>
-  </#list>
+
 </table>
 </body>
 </html>
