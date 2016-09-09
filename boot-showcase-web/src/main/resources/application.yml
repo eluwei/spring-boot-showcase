@@ -29,8 +29,8 @@ spring:
     freemarker:
         template-loader-path: /WEB-INF/freemarker/
         suffix: .html
+#mybatis 配置
 mybatis:
+    config-location: classpath:mybatis-config.xml
     mapper-locations: classpath:mapper/*.xml
     executor-type: SIMPLE
-    configuration:
-        cacheEnabled: true

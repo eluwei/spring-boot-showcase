@@ -53,6 +53,12 @@
                 <artifactId>mybatis</artifactId>
                 <version>3.4.0</version>
             </dependency>
+            <!--mybatis 分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>4.1.6</version>
+            </dependency>
             <!-- powermock to mockit static method and so on-->
             <dependency>
                 <groupId>org.powermock</groupId>
