@@ -1,6 +1,5 @@
 package com.pactera.bg3.han.api.web.controller;
 
-import com.alibaba.druid.sql.PagerUtils;
 import com.github.pagehelper.PageHelper;
 import com.pactera.bg3.han.api.web.dto.CardDTO;
 import com.pactera.bg3.han.service.CardService;
