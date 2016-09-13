@@ -4,37 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.pactera.bg3.han.dao.CardMapper">
-	<resultMap type="com.pactera.bg3.han.model.Card" id="myCard">
-	</resultMap>
 
-	<select id="list" resultMap="myCard">
-		SELECT * FROM cards
-	</select>
-
-	<select id="getById" parameterType="string" resultMap="myCard">
-		SELECT *
-		FROM cards WHERE ID=#{id}
-	</select>
-
-	<delete id="delete">
-		DELETE FROM
-		cards WHERE ID =#{id}
-	</delete>
-
-
-	<insert id="create" parameterType="com.pactera.bg3.han.model.Card">
-		insert into cards (id,cardId,
-		faceValue, frozenValue, balanceValue, comments)
-		values(uuid(),#{cardId},
-		#{faceValue}, #{frozenValue}, #{balanceValue}, #{comments})
-	</insert>
-
-	<update id="update" parameterType="com.pactera.bg3.han.model.Card">
-		UPDATE cards SET
-		cardId=#{cardId},
-		comments =#{comments},
-		faceValue=#{faceValue}, frozenValue=#{frozenValue}, balanceValue=#{balanceValue}
-		WHERE ID = #{id}
-	</update>
 	
 </mapper>

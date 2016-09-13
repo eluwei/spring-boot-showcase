@@ -23,7 +23,7 @@ spring:
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
 #mybatis 配置
-mybatis:
-    config-location: classpath:mybatis-config.xml
-    mapper-locations: classpath:mapper/*.xml
-    executor-type: SIMPLE
+#mybatis:
+#    config-location: classpath:mybatis-config.xml
+#    mapper-locations: classpath:mapper/*.xml
+#    executor-type: SIMPLE
