@@ -53,6 +53,12 @@
                 <artifactId>mybatis</artifactId>
                 <version>3.4.0</version>
             </dependency>
+            <!--通用Mapper http://www.oschina.net/p/mybatis-mapper-->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>3.3.6</version>
+            </dependency>
             <!--mybatis 分页-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
