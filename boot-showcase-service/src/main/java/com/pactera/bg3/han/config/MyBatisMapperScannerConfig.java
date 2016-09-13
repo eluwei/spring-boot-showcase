@@ -22,9 +22,9 @@ public class MyBatisMapperScannerConfig {
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage("tk.mybatis.springboot.mapper");
+        mapperScannerConfigurer.setBasePackage("com.pactera.bg3.han.dao");
         Properties properties = new Properties();
-        properties.setProperty("mappers", "tk.mybatis.springboot.util.MyMapper");
+        properties.setProperty("mappers", "com.pactera.bg3.han.dao");
         properties.setProperty("notEmpty", "false");
         properties.setProperty("IDENTITY", "MYSQL");
         mapperScannerConfigurer.setProperties(properties);
