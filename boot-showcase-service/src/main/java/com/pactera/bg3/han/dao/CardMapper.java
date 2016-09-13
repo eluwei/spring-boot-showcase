@@ -1,5 +1,6 @@
 package com.pactera.bg3.han.dao;
 
+import com.pactera.bg3.han.model.Card;
 import com.pactera.bg3.han.mybatis.base.MyMapper;
 
 /**
@@ -8,6 +9,6 @@ import com.pactera.bg3.han.mybatis.base.MyMapper;
  * Date: 2016-09-07
  * Time: 23:15
  */
-public interface CardMapper extends MyMapper<CardMapper> {
+public interface CardMapper extends MyMapper<Card> {
 
 }

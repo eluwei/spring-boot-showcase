@@ -1,21 +1,21 @@
 package com.pactera.bg3.han.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -25,14 +25,22 @@ import java.util.Properties;
  * Time: 16:57
  */
 @Configuration
-@EnableTransactionManagement
-public class MyBatisConfig implements TransactionManagementConfigurer {
+public class MyBatisConfig {
 
-    @Autowired
-    DataSource dataSource;
-
+    @Bean(name = "dataSource")
+    public DataSource getDataSource(@Value("${spring.datasource.url}") String url,
+                                    @Value("${spring.datasource.username}") String username,
+                                    @Value("${spring.datasource.password}") String password) throws SQLException {
+        System.out.println("[*生成*]DataSource -> url:" + url + " username:" + username + " password:" + password);
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setUrl(url);
+        druidDataSource.setUsername(username);
+        druidDataSource.setPassword(password);
+        druidDataSource.setFilters("stat, wall");
+        return druidDataSource;
+    }
     @Bean(name = "sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactoryBean() {
+    public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("com.pactera.bg3.han.model");
@@ -66,8 +74,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     }
 
     @Bean
-    @Override
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
+    public PlatformTransactionManager annotationDrivenTransactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 }

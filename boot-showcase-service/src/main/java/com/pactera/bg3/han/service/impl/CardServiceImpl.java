@@ -23,26 +23,26 @@ public class CardServiceImpl implements CardService {
     private CardMapper cardMapper;
 
     public List<Card> list() {
-        return cardMapper.list();
+        return cardMapper.selectAll();
     }
 
     public Card getById(String id) {
-        return cardMapper.getById(id);
+        return cardMapper.selectByPrimaryKey(id);
     }
 
-    @Transactional
+
     public void update(Card card) {
-        cardMapper.update(card);
+        cardMapper.updateByPrimaryKey(card);
     }
 
-    @Transactional
+
     public void delete(String id) {
-        cardMapper.delete(id);
+        cardMapper.deleteByPrimaryKey(id);
     }
 
-    @Transactional
+
     public void create(Card card) {
-        cardMapper.create(card);
+        cardMapper.insertSelective(card);
     }
 
 }
