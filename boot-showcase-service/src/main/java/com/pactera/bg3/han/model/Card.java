@@ -24,5 +24,5 @@ public class Card {
     private float faceValue = -1;
     private float frozenValue = -1;
     private float balanceValue = -1;
-
+    private String comments;
 }
