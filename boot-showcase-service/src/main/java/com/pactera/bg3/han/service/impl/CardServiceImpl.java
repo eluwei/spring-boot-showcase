@@ -3,6 +3,8 @@ package com.pactera.bg3.han.service.impl;
 import com.pactera.bg3.han.dao.CardMapper;
 import com.pactera.bg3.han.model.Card;
 import com.pactera.bg3.han.service.CardService;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import java.util.List;
 public class CardServiceImpl implements CardService {
 
     @Autowired
+    @Getter
+    @Setter
     private CardMapper cardMapper;
 
     public List<Card> list() {
