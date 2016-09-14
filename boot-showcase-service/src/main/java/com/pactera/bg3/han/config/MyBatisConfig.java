@@ -6,6 +6,8 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,12 +28,13 @@ import java.util.Properties;
  */
 @Configuration
 public class MyBatisConfig {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean(name = "dataSource")
     public DataSource getDataSource(@Value("${spring.datasource.url}") String url,
                                     @Value("${spring.datasource.username}") String username,
                                     @Value("${spring.datasource.password}") String password) throws SQLException {
-        System.out.println("[*生成*]DataSource -> url:" + url + " username:" + username + " password:" + password);
+        logger.info("[*生成*]DataSource -> url:" + url + " username:" + username + " password:" + password);
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setUrl(url);
         druidDataSource.setUsername(username);
@@ -39,6 +42,7 @@ public class MyBatisConfig {
         druidDataSource.setFilters("stat, wall");
         return druidDataSource;
     }
+
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
