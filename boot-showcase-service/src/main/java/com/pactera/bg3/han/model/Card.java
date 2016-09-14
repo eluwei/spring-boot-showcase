@@ -1,6 +1,8 @@
 package com.pactera.bg3.han.model;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.NameStyle;
+import tk.mybatis.mapper.code.Style;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
  */
 @Data
 @Table(name = "cards")
+//tk.mybatis全局默认使用驼峰转下划线方式，如不使用如下注解，cardId会与card_id字段对应
+@NameStyle(Style.normal)
 public class Card {
     @Id
     private String id;

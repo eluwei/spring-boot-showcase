@@ -72,7 +72,7 @@
             <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper</artifactId>
-                <version>3.3.8</version>
+                <version>3.3.9</version>
             </dependency>
             <!--mybatis 分页-->
             <dependency>
