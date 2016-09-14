@@ -21,8 +21,8 @@ public class Card {
     @Id
     private String id;
     private String cardId;
-    private float faceValue;
-    private float frozenValue;
-    private float balanceValue;
+    private float faceValue = -1;
+    private float frozenValue = -1;
+    private float balanceValue = -1;
 
 }

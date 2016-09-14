@@ -30,19 +30,20 @@ public class CardServiceImpl implements CardService {
         return cardMapper.selectByPrimaryKey(id);
     }
 
-
+    @Transactional
     public void update(Card card) {
         cardMapper.updateByPrimaryKey(card);
     }
 
-
+    @Transactional
     public void delete(String id) {
         cardMapper.deleteByPrimaryKey(id);
     }
 
-
+    @Transactional
     public void create(Card card) {
         cardMapper.insertSelective(card);
     }
+
 
 }
