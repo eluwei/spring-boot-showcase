@@ -1,6 +1,7 @@
 package com.pactera.bg3.han.api.web.dto;
 
 import com.pactera.bg3.han.model.Card;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,16 @@ import java.util.List;
  * Date: 2016-09-08
  * Time: 9:30
  */
+@Data
 public class CardDTO {
     private String cardId;
     private float faceValue;
     private float useageRate;
     private float frozenRate;
 
+    public CardDTO() {
 
+    }
     public CardDTO(Card card) {
         this.cardId = card.getCardId();
         this.faceValue = card.getFaceValue();
@@ -33,42 +37,6 @@ public class CardDTO {
         return result;
     }
 
-    public String getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(String cardId) {
-        this.cardId = cardId;
-    }
-
-    public float getFaceValue() {
-        return faceValue;
-    }
-
-    public void setFaceValue(float faceValue) {
-        this.faceValue = faceValue;
-    }
-
-    public float getUseageRate() {
-        return useageRate;
-    }
-
-    public void setUseageRate(float useageRate) {
-        this.useageRate = useageRate;
-    }
-
-    public float getFrozenRate() {
-        return frozenRate;
-    }
-
-    public void setFrozenRate(float frozenRate) {
-        this.frozenRate = frozenRate;
-    }
-
-
-    public CardDTO() {
-
-    }
 
 
 }

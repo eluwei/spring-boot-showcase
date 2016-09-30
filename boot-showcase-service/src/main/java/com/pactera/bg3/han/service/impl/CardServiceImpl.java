@@ -3,6 +3,8 @@ package com.pactera.bg3.han.service.impl;
 import com.pactera.bg3.han.dao.CardMapper;
 import com.pactera.bg3.han.model.Card;
 import com.pactera.bg3.han.service.CardService;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,29 +22,32 @@ import java.util.List;
 public class CardServiceImpl implements CardService {
 
     @Autowired
+    @Getter
+    @Setter
     private CardMapper cardMapper;
 
     public List<Card> list() {
-        return cardMapper.list();
+        return cardMapper.selectAll();
     }
 
     public Card getById(String id) {
-        return cardMapper.getById(id);
+        return cardMapper.selectByPrimaryKey(id);
     }
 
     @Transactional
     public void update(Card card) {
-        cardMapper.update(card);
+        cardMapper.updateByPrimaryKey(card);
     }
 
     @Transactional
     public void delete(String id) {
-        cardMapper.delete(id);
+        cardMapper.deleteByPrimaryKey(id);
     }
 
     @Transactional
     public void create(Card card) {
-        cardMapper.create(card);
+        cardMapper.insertSelective(card);
     }
+
 
 }

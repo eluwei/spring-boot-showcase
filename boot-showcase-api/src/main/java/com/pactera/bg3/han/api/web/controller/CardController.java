@@ -1,9 +1,11 @@
 package com.pactera.bg3.han.api.web.controller;
 
 import com.github.pagehelper.PageHelper;
+import com.google.common.base.Preconditions;
 import com.pactera.bg3.han.api.web.dto.CardDTO;
 import com.pactera.bg3.han.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,12 @@ public class CardController {
     public List<CardDTO> listAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "1") int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return CardDTO.transForm(cardService.list());
+    }
+
+    @RequestMapping("/{id}")
+    public CardDTO cardDetail(@PathVariable(value = "id") String id) {
+        Preconditions.checkNotNull(id);
+        return new CardDTO(cardService.getById(id));
     }
 
 }
