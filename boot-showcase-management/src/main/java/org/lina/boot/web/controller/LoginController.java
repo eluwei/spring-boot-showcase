@@ -90,7 +90,7 @@ public class LoginController {
             return "/login/login";
         }
              
-        return "redirect:/web/index";  
+        return "redirect:/";
     }
 
 

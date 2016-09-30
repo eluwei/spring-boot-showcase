@@ -53,6 +53,11 @@
                 <artifactId>shiro-ehcache</artifactId>
                 <version>${shiro.version}</version>
             </dependency>
+            <dependency>
+                <groupId>net.mingsoft</groupId>
+                <artifactId>shiro-freemarker-tags</artifactId>
+                <version>0.1</version>
+            </dependency>
             <!-- google kaptcha -->
             <dependency>
                 <groupId>com.google.kaptcha</groupId>
