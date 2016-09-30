@@ -22,9 +22,9 @@ public class MyBatisMapperScannerConfig {
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage("com.pactera.bg3.han.dao");
+        mapperScannerConfigurer.setBasePackage("org.lina.boot.dao");
         Properties properties = new Properties();
-        properties.setProperty("mappers", "com.pactera.bg3.han.mybatis.base.MyMapper");
+        properties.setProperty("mappers", "org.lina.boot.mybatis.base.MyMapper");
         properties.setProperty("notEmpty", "false");
         properties.setProperty("IDENTITY", "MYSQL");
         mapperScannerConfigurer.setProperties(properties);

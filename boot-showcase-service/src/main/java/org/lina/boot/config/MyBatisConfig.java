@@ -47,7 +47,7 @@ public class MyBatisConfig {
     public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.pactera.bg3.han.model");
+        bean.setTypeAliasesPackage("org.lina.boot.model");
 
         //分页插件
         PageHelper pageHelper = new PageHelper();
