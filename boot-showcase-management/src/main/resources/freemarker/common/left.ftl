@@ -5,9 +5,13 @@
 
 					<a href="#" class='toggle-subnav'>
 						<i class="fa fa-angle-down"></i>
-							<#list menuList as menu>
-								<span><a href="${rc.contextPath}${menu.url}">${menu.name}</a></span> <br>
-						   </#list>
+							<span><a href="${rc.contextPath}">功能菜单</a></span> <br>
+						    <span><a href="${rc.contextPath}">分类管理</a></span> <br>
+                        	<span><a href="${rc.contextPath}">商品管理</a></span> <br>
+                        	<span><a href="${rc.contextPath}">用户管理</a></span> <br>
+                        	<span><a href="${rc.contextPath}">角色管理</a></span> <br>
+                        	<span><a href="${rc.contextPath}">权限列表</a></span> <br>
+                        	<span><a href="${rc.contextPath}">资源列表</a></span> <br>
 				    </a>
 				 </div>
 	
