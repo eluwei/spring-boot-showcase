@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>com.pactera.bg3.han.WebMain</start-class>
+        <start-class>org.lina.boot.WebMain</start-class>
         <main.basedir>${basedir}/../..</main.basedir>
         <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
     </properties>
