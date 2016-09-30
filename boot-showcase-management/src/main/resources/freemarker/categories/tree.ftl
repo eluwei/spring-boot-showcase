@@ -46,7 +46,7 @@
                             <ul id="treeDemo" class="ztree"></ul>
 						</div>
 						<div class="col-md-6">
-							<form id="categoryForm" method="POST" class='form-horizontal' action="${rc.contextPath}/web/categories/update">
+							<form id="categoryForm" method="POST" class='form-horizontal' action="${rc.contextPath}/categories/update">
 								<div class="form-group">
 									<label for="textfield" class="control-label col-sm-3">分类名</label>
 									<div class="col-sm-9">
@@ -102,7 +102,7 @@ $(function () {
 
     };
 
-    var url=ctx+"/web/categories/tree.json";
+    var url=ctx+"/categories/tree.json";
     $("#createRootCategory").on("click",function(){
 		$("#categoryForm")[0].reset();
 		$("#parentCategoryId").val("");
@@ -117,7 +117,7 @@ $(function () {
 	});
     $("#deleteCategory").on("click",function(){
         $("#op").val("d");
-		$.post(ctx+"/web/categories/update",{categoryId:selectedNode["categoryId"],op:"d"},function(data){
+		$.post(ctx+"/categories/update",{categoryId:selectedNode["categoryId"],op:"d"},function(data){
             zTree.removeChildNodes(selectedNode);
 			zTree.removeNode(selectedNode);
             selectedNode="";

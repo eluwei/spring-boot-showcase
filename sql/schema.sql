@@ -14,3 +14,13 @@ CREATE TABLE `admin_user` (
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `category` (
+  `category_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) DEFAULT NULL,
+  `descriptions` varchar(255) DEFAULT NULL,
+  `parent_category_id` bigint(20) DEFAULT NULL,
+  `path_Str` varchar(500) DEFAULT '',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `categoryId_UNIQUE` (`category_id`)
+);
