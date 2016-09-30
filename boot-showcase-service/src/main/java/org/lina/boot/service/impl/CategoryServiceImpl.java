@@ -15,7 +15,11 @@ public class CategoryServiceImpl extends BaseService<Category> {
     @Transactional
     public int save(Category category) {
         if(category.getParentCategoryId() !=null ){
-            Category pc=get(category.getParentCategoryId());
+            //FIXME why get can't work??
+            //Category pc=get(category.getParentCategoryId());
+            Category p = new Category();
+            p.setCategoryId(category.getParentCategoryId());
+            Category pc = selectOne(p);
             category.setPathStr(pc.getPathStr()+"/"+pc.getCategoryId());
         }
         return super.save(category);

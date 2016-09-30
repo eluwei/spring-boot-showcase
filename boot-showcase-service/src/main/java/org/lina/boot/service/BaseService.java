@@ -19,7 +19,9 @@ public abstract class BaseService<T>   {
     public T get(Object key){
         return mapper.selectByPrimaryKey(key);
     }
-
+    public T selectOne(T entity){
+        return mapper.selectOne(entity);
+    }
     public int save(T entity){
         return mapper.insert(entity);
     }
