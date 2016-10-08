@@ -111,7 +111,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">新增/更新</h4>
             </div>
-            <form id="editSkuForm" method="post" class='form-horizontal' action="${rc.contextPath}/web/products/${productId}/sku">
+            <form id="editSkuForm" method="post" class='form-horizontal' action="${rc.contextPath}/products/${productId}/sku">
             <div class="modal-body">
                     <div class="form-group">
                         <label for="textfield" class="control-label col-sm-3">SKU名</label>
@@ -211,7 +211,7 @@
      $('#skuTable').DataTable().ajax.reload();
  }
  function deleteSku(id){
-     $.post("${rc.contextPath}/web/products/${productId}/sku/"+id+"/delete",{},function(data){
+     $.post("${rc.contextPath}/products/${productId}/sku/"+id+"/delete",{},function(data){
          reload();
      });
  }
@@ -221,7 +221,7 @@
          $("#editSkuForm")[0].reset();
          $("#id").val(-1);
      }else{
-         $.getJSON("${rc.contextPath}/web/products/${productId}/sku/"+id,{},function(data){
+         $.getJSON("${rc.contextPath}/products/${productId}/sku/"+id,{},function(data){
              $.each(data,function(key,val){
                  $("#"+key).val(val);
              });

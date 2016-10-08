@@ -1,5 +1,6 @@
 package org.lina.boot.web.controller;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.lina.boot.dto.RESTResponseDTO;
@@ -44,12 +45,12 @@ public class ProductController {
         int p= start/length + 1 ;
         String orderBy=COLUMNS[sort]+" "+dir;
         PageHelper.startPage(p,length,orderBy);
-        PageInfo<Product> products= (PageInfo<Product>)productService.listProducts(q);
+        Page<Product> products= (Page<Product>)productService.listProducts(q);
 
         rs.setDraw(draw);
         rs.setRecordsTotal(products.getTotal());
         rs.setRecordsFiltered(products.getTotal());
-        rs.setData(products.getList());
+        rs.setData(products);
         return rs;
     }
 

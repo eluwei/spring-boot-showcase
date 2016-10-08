@@ -49,6 +49,7 @@ CREATE TABLE `sku` (
   `title` varchar(255) DEFAULT NULL COMMENT '商品描述',
   `list_price` decimal(10,0) DEFAULT NULL,
   `sale_price` decimal(10,0) DEFAULT NULL,
+  `stock_level` decimal(10,0) DEFAULT -1 COMMENT 'sku库存' ,
   `img` varchar(255) DEFAULT NULL COMMENT '商品图片',
   `img_detail` varchar(255) DEFAULT NULL COMMENT '商品详情图片',
   PRIMARY KEY (`id`)

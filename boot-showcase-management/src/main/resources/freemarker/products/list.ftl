@@ -20,48 +20,7 @@
 			</ul>
 		</div>
 		<div class="row">
-			<!-- comment search form, use datatables search instead
-			<div class="col-sm-12">
-				<div class="box">
-					<div class="box-title">
-						<h3>
-							<i class="fa fa-edit"></i> 产品查询
-						</h3>
-						<div class="actions">
-							<a href="#" class="btn btn-mini content-slideUp"> <i
-								class="fa fa-angle-down"></i>
-							</a>
-						</div>
-					</div>
 
-
-					<div class="box-content">
-						<div class="col-md-6 col-md-offset-3">
-							<form id="searchMemberForm" method="GET" class='form-horizontal' action="#">
-								<div class="form-group">
-									<label for="textfield" class="control-label col-sm-3">产品名</label>
-									<div class="col-sm-9">
-										<input type="text" name="productName" class="form-control" value="">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="textfield" class="control-label col-sm-3">
-										产品描述</label>
-									<div class="col-sm-9">
-										<input type="text" name="prductDesc" class="form-control" value="">
-									</div>
-								</div>
-
-
-								<div class="form-actions">
-									<button type="submit" class="btn btn-primary">搜 索</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			-->
 			<div class="col-sm-12">
 				<div class="box">
 					<div class="box-title">
@@ -114,7 +73,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">新增/更新</h4>
             </div>
-            <form id="productForm" method="post" class='form-horizontal' action="${rc.contextPath}/web/products">
+            <form id="productForm" method="post" class='form-horizontal' action="${rc.contextPath}/products">
             <div class="modal-body">
                     <div class="form-group">
                         <label for="textfield" class="control-label col-sm-3">产品名</label>
@@ -146,15 +105,7 @@
 							<input type="text" id="longDescription" name="longDescription" class="form-control required" value="">
 						</div>
 					</div>
-				<!--
-                <div class="form-group">
-                    <label for="textfield" class="control-label col-sm-3">
-                        所属分类</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="parentCategoryId" name="parentCategoryId" class="form-control" value="">
-                    </div>
-                </div>
-                -->
+
                 <div class="form-group">
                     <label for="textfield" class="control-label col-sm-3">
                         <!--是否上架 --></label>
@@ -259,19 +210,19 @@
  });
 	function mgrSku(id){
 		console.log("mgr sku "+ id);
-		window.location.href="${rc.contextPath}/web/products/"+id+"/skus"
+		window.location.href="${rc.contextPath}/products/"+id+"/skus"
 	}
 
 	 function putOn(id){
 		 console.log("put on "+ id);
-		 $.post("${rc.contextPath}/web/products/"+id+"/on",{},function(data){
+		 $.post("${rc.contextPath}/products/"+id+"/on",{},function(data){
              $('#products').DataTable().ajax.reload();
 		 });
 	 }
 
 	 function pullOff(id){
 		 console.log("pull off "+ id);
-         $.post("${rc.contextPath}/web/products/"+id+"/off",{},function(data){
+         $.post("${rc.contextPath}/products/"+id+"/off",{},function(data){
              $('#products').DataTable().ajax.reload();
          });
 	 }
@@ -279,7 +230,7 @@
 	 function update(id){
 		 console.log("update "+ id);
 		 var properties=["id","name","description","longDescription","parentCategoryId","onShelf"];
-		 $.getJSON("${rc.contextPath}/web/products/"+id,{},function(data){
+		 $.getJSON("${rc.contextPath}/products/"+id,{},function(data){
 			 $.each(properties,function(idx,val){
 				$("#"+val).val(data[val]);
 			 });

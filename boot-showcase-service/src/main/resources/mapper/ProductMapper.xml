@@ -38,7 +38,7 @@
     long_description
   </sql>
 
-  <select id="listProducts" resultMap="ResultMapWithBLOBs">
+  <select id="listProducts" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
     select
     <include refid="Base_Column_List" />
     ,

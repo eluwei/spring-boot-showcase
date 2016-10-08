@@ -1,4 +1,5 @@
 package org.lina.boot.dao;
+import org.apache.ibatis.annotations.Param;
 import org.lina.boot.model.Product;
 import org.lina.boot.mybatis.base.MyMapper;
 
@@ -11,5 +12,5 @@ import java.util.List;
  * Time: 15:32
  */
 public interface ProductMapper extends MyMapper<Product> {
-    List<Product> listProducts(String q);
+    List<Product> listProducts(@Param("q") String q);
 }
