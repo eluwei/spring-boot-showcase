@@ -1,5 +1,8 @@
 package org.lina.boot.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name="category")
@@ -10,6 +13,8 @@ public class Category {
      *
      * @mbggenerated Tue May 31 17:27:56 CST 2016
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
     /**
