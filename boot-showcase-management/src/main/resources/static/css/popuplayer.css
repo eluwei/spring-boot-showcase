@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+a{text-decoration:none;}
+a.closeBtn{position:absolute;top:10px;right:10px;display:block;width:60px;padding:4px 0;text-align:center;background:#fff;border:1px solid #85B6E2;color:#333;}
+a.closeBtn:hover{color:#fff;border:1px solid #85B6E2;background:#85B6E2;}
+.blk{width:600px;height: 400px;position:relative;}
+.blk .head, .blk .head-right, .blk .foot, .blk .foot{background:url(../images/pop_up_bg.png);overflow:hidden;height:4px;}
+.blk .head{padding-left:4px;}
+.blk .head-right{background-position:right top;}
+.blk .foot{padding-top:400px;background-position:left bottom;}
+.blk .foot-right{background-position:right bottom;}
+.blk .main{width:100%;height: 100%;border-left:2px solid #85B6E2;border-right:2px solid #85B6E2;position:relative;background:#F1F5F8;}
+.blk .main h2{font:bold 16px "Microsoft YaHei";padding:10px 20px 2px;color:#85B6E2;}
+.blk .main .divTable{margin:15px;}
+.blk .main .divTable .td{float:left;width:100px;height:25px;}
+.blk .main .divTable .tr{clear:both;height:15px;}
