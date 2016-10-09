@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +22,13 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 @Controller
 public class LoginController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-	
+
+    @RequestMapping(value = "/password",method = RequestMethod.POST)
+    public Object changePassword(@RequestParam("oldPassword")String oldPassword,
+                                 @RequestParam("password")String password,
+                                 @RequestParam("confirmPassword")String confirmPassword){
+        return null;
+    }
 	
 	/**
 	 * 展现登录页
