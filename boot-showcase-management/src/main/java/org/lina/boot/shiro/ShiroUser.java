@@ -7,11 +7,16 @@ package org.lina.boot.shiro;
  * Time: 13:27
  */
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
  */
+
 public class ShiroUser implements Serializable {
 
     private static final long serialVersionUID = -1373760761780840081L;
@@ -21,6 +26,10 @@ public class ShiroUser implements Serializable {
     public String loginName;
 
     public String name;
+
+    @Getter
+    @Setter
+    private String salt;
 
     public ShiroUser(Long id, String loginName, String name) {
         this.id = id;
@@ -71,5 +80,9 @@ public class ShiroUser implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public String getCredentialsSalt(){
+        return loginName+salt;
     }
 }

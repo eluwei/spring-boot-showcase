@@ -2,6 +2,7 @@ package org.lina.boot.config;
 
 
 import com.jagregory.shiro.freemarker.ShiroTags;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -50,6 +51,12 @@ public class ShiroConfiguration {
         ShiroDbRealm realm = new ShiroDbRealm();
         realm.setCacheManager(cacheManager);
         realm.setAdminUserService(userService);
+        HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
+
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(2);
+        matcher.setStoredCredentialsHexEncoded(true);
+        realm.setCredentialsMatcher(matcher);
         return realm;
     }
 

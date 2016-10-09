@@ -2,6 +2,8 @@ package org.lina.boot.model;
 
 import com.google.common.base.Strings;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -20,6 +22,10 @@ public class AdminUser {
     @Column
     private String userName;
     private String password;
+    @Getter
+    @Setter
+    private String salt;
+
     public AdminUser(){
 
     }
@@ -37,5 +43,8 @@ public class AdminUser {
             return true;
         }
         return false;
+    }
+    public String getCredentialsSalt(){
+        return userName+salt;
     }
 }
