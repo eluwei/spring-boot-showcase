@@ -152,8 +152,8 @@
                  success:function(data){
                      if(data.procCode == 200){
                          //alert("新增、更新成功！");
-                         $("#editProduct").modal("hide");
-                         $('#products').DataTable().ajax.reload();
+                         $("#editAdminUser").modal("hide");
+                         $('#adminUsers').DataTable().ajax.reload();
                      }else{
                          alert("失败了。");
                      }

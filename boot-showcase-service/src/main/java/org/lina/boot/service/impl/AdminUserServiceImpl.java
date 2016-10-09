@@ -40,11 +40,13 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
         Preconditions.checkArgument(user.getConfirmPassword().equals(user.getPassword()),"确认密码不匹配!!");
         if(user.getId() == null || user.getId() == -1){
             //new user
+            user.setId(null);
             mapper.insert(user);
         }else{
             AdminUser updateUser=new AdminUser();
             updateUser.setId(user.getId());
             updateUser.setPassword(user.getPassword());
+            updateUser.setSalt(user.getSalt());
             mapper.updateByPrimaryKeySelective(updateUser);
         }
         return true;

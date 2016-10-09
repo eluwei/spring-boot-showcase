@@ -11,17 +11,17 @@
 			<div class="user">
 				<ul class="icon-nav">
 					<li><span><i class="glyphicon glyphicon-user"></i></span>
-						<a href="#">						    					
+						<a href="#" title="修改资料">
 							<span><@shiro.principal/> </span>
 						</a>
 					</li>
 					<li><span><i class="glyphicon glyphicon-edit"></i></span>
 						<a href="${rc.contextPath}/member/userInfoRedirect">
-							<span>修改资料</span>
+							<span>修改密码</span>
 						</a>
 					</li>
 					<li><span><i class="glyphicon glyphicon-power"></i></span>
-						<a href="${rc.contextPath}/web/logout">
+						<a href="${rc.contextPath}/logout">
 							<span>安全退出</span>
 						</a>
 					</li>

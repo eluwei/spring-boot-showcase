@@ -82,6 +82,8 @@ public class AdminUserController {
         AdminUser user = baseService.get(id);
         AdminUser result=new AdminUser();
         result.setId(user.getId());
+        result.setPassword("");
+        result.setConfirmPassword("");
         result.setUserName(user.getUserName());
         return result;
     }
