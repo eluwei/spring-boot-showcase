@@ -44,6 +44,8 @@
 <!-- Validation -->
 <script src="${rc.contextPath}/flat/js/plugins/validation/jquery.validate.min.js"></script>
 <script src="${rc.contextPath}/flat/js/plugins/validation/additional-methods.min.js"></script>
+<script src="${rc.contextPath}/flat/js/plugins/validation/messages_zh.js"></script>
+
    <!-- New DataTables -->
     <script src="${rc.contextPath}/flat/js/plugins/momentjs/jquery.moment.min.js"></script>
     <script src="${rc.contextPath}/flat/js/plugins/momentjs/moment-range.min.js"></script>
