@@ -53,6 +53,14 @@ public class PasswordHelper {
         user.setConfirmPassword(newConfirmPassword);
     }
 
+    public String encryptPassword(String plainPassword,String salt){
+        return new SimpleHash(
+                algorithmName,
+                plainPassword,
+                ByteSource.Util.bytes(salt),
+                hashIterations).toHex();
+    }
+
     public static void main(String[] args) {
         AdminUser admin=new AdminUser();
         admin.setUserName("admin");

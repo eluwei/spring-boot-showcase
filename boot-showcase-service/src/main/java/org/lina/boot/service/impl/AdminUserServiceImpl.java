@@ -5,6 +5,7 @@ import org.lina.boot.dao.AdminUserMapper;
 import org.lina.boot.model.AdminUser;
 import org.lina.boot.service.AdminUserService;
 import org.lina.boot.service.BaseService;
+import org.lina.boot.shiro.PasswordHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -21,6 +22,9 @@ import java.util.List;
 public class AdminUserServiceImpl extends BaseService<AdminUser> implements AdminUserService {
     @Autowired
     AdminUserMapper adminMapper;
+
+    @Autowired
+    PasswordHelper passwordHelper;
 
     public AdminUser loadByUserName(String userName){
         Preconditions.checkNotNull(userName);
@@ -49,6 +53,21 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
             updateUser.setSalt(user.getSalt());
             mapper.updateByPrimaryKeySelective(updateUser);
         }
+        return true;
+    }
+
+    @Override
+    public boolean changePassword(String userName, String oldPassword, String newPassword, String confirmPassword) {
+        Preconditions.checkNotNull(userName);
+        Preconditions.checkNotNull(oldPassword);
+        Preconditions.checkNotNull(newPassword);
+        Preconditions.checkNotNull(confirmPassword);
+        Preconditions.checkArgument(confirmPassword.equals(newPassword), "confirmPassword输入不匹配");
+        AdminUser user = loadByUserName(userName);
+        Preconditions.checkArgument(user.getPassword().equals(passwordHelper.encryptPassword(oldPassword,user.getCredentialsSalt())));
+        user.setPassword(newPassword);
+        passwordHelper.encryptPassword(user);
+        insertOrUpdateAdminUser(user);
         return true;
     }
 }

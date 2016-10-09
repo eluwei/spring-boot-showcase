@@ -4,8 +4,14 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.lina.boot.model.AdminUser;
+import org.lina.boot.service.AdminUserService;
+import org.lina.boot.shiro.CurrentUser;
+import org.lina.boot.shiro.PasswordHelper;
+import org.lina.boot.shiro.ShiroUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -23,11 +29,19 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 public class LoginController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
+
+
+    @Autowired
+    AdminUserService userService;
+
+
     @RequestMapping(value = "/password",method = RequestMethod.POST)
     public Object changePassword(@RequestParam("oldPassword")String oldPassword,
                                  @RequestParam("password")String password,
                                  @RequestParam("confirmPassword")String confirmPassword){
-        return null;
+        //FIXME need fix..
+        String userName= CurrentUser.name();
+        return userService.changePassword(userName,oldPassword,password,confirmPassword);
     }
 	
 	/**

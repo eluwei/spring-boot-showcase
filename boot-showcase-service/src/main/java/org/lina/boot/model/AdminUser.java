@@ -51,4 +51,5 @@ public class AdminUser {
     public String getCredentialsSalt(){
         return userName+salt;
     }
+
 }
