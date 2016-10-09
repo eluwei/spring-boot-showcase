@@ -24,6 +24,10 @@ public class AdminUser {
     private String password;
     @Getter
     @Setter
+    @Transient
+    private String confirmPassword;
+    @Getter
+    @Setter
     private String salt;
 
     public AdminUser(){

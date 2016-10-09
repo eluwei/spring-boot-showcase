@@ -10,7 +10,7 @@
 						    <span><a href="${rc.contextPath}/categories">分类管理</a></span> <br>
                         	<span><a href="${rc.contextPath}/products">商品管理</a></span> <br>
                         	<span><a href="${rc.contextPath}">订单管理</a></span> <br>
-                        	<span><a href="${rc.contextPath}">后台用户</a></span> <br>
+                        	<span><a href="${rc.contextPath}/admin/users">后台用户</a></span> <br>
                         	<span><a href="${rc.contextPath}">角色管理</a></span> <br>
                         	<span><a href="${rc.contextPath}">权限列表</a></span> <br>
                         	<span><a href="${rc.contextPath}">资源列表</a></span> <br>
