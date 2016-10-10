@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 @Controller
-public class LoginController {
+public class LoginController implements BaseController{
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
 

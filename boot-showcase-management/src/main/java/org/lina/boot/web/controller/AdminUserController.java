@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * Time: 11:30
  */
 @Controller
-public class AdminUserController {
+public class AdminUserController implements BaseController{
 
     private  static String [] COLUMNS=new String[]{"id","userName","password","confirmPassword"};
 
@@ -44,11 +44,8 @@ public class AdminUserController {
     @RequestMapping(value = "/admin/users",method = RequestMethod.POST)
     @ResponseBody
     public Object saveOrUpdatepassword(AdminUser user){
-        RESTResponseDTO rs=new RESTResponseDTO();
-        rs.setProcCode(200);
         adminUser.insertOrUpdateAdminUser(user);
-        rs.setMessage("save or update success!");
-        return rs;
+        return RESTResponseDTO.create().execSuccess().addMessage("save or update success!");
     }
 
     @RequestMapping("/admin/users/ajax")

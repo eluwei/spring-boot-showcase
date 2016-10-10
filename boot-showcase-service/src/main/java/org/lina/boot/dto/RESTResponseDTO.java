@@ -1,35 +1,36 @@
 package org.lina.boot.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
-
+@Data
 public class RESTResponseDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 
 	private int procCode;
 	private Object payload;
-	private String message;
-	
+	private StringBuffer message;
+	private Exception exception;
 
-	public Object getPayload() {
-		return payload;
+	public RESTResponseDTO execSuccess(){
+		procCode=200;
+		return this;
 	}
-	public void setPayload(Object payload) {
-		this.payload = payload;
+	public RESTResponseDTO execFailue(){
+		procCode=99999;
+		return this;
 	}
-	public String getMessage() {
-		return message;
+	public RESTResponseDTO addMessage(String msg){
+		message.append(msg);
+		return this;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public RESTResponseDTO addException(Exception ec){
+		exception = ec;
+		return this;
 	}
-
-    public int getProcCode() {
-        return procCode;
-    }
-
-    public void setProcCode(int procCode) {
-        this.procCode = procCode;
-    }
+	public static RESTResponseDTO create(){
+		return new RESTResponseDTO();
+	}
 }
