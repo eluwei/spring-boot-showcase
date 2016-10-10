@@ -39,7 +39,6 @@ public class LoginController {
     public Object changePassword(@RequestParam("oldPassword")String oldPassword,
                                  @RequestParam("password")String password,
                                  @RequestParam("confirmPassword")String confirmPassword){
-        //FIXME need fix..
         String userName= CurrentUser.name();
         return userService.changePassword(userName,oldPassword,password,confirmPassword);
     }

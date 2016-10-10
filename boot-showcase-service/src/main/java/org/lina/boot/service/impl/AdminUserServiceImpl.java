@@ -8,6 +8,7 @@ import org.lina.boot.service.BaseService;
 import org.lina.boot.shiro.PasswordHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
     }
 
     @Override
+    @Transactional
     public boolean insertOrUpdateAdminUser(AdminUser user) {
         Preconditions.checkNotNull(user);
         Preconditions.checkNotNull(user.getPassword());
@@ -45,18 +47,20 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
         if(user.getId() == null || user.getId() == -1){
             //new user
             user.setId(null);
+            passwordHelper.encryptPassword(user);
             mapper.insert(user);
         }else{
             AdminUser updateUser=new AdminUser();
             updateUser.setId(user.getId());
             updateUser.setPassword(user.getPassword());
-            updateUser.setSalt(user.getSalt());
+            passwordHelper.encryptPassword(updateUser);
             mapper.updateByPrimaryKeySelective(updateUser);
         }
         return true;
     }
 
     @Override
+    @Transactional
     public boolean changePassword(String userName, String oldPassword, String newPassword, String confirmPassword) {
         Preconditions.checkNotNull(userName);
         Preconditions.checkNotNull(oldPassword);
@@ -64,10 +68,8 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
         Preconditions.checkNotNull(confirmPassword);
         Preconditions.checkArgument(confirmPassword.equals(newPassword), "confirmPassword输入不匹配");
         AdminUser user = loadByUserName(userName);
-        Preconditions.checkArgument(user.getPassword().equals(passwordHelper.encryptPassword(oldPassword,user.getCredentialsSalt())));
+        Preconditions.checkArgument(user.getPassword().equals(passwordHelper.encryptPassword(oldPassword, user.getCredentialsSalt())));
         user.setPassword(newPassword);
-        passwordHelper.encryptPassword(user);
-        insertOrUpdateAdminUser(user);
-        return true;
+        return insertOrUpdateAdminUser(user);
     }
 }

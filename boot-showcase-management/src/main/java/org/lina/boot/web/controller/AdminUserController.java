@@ -37,10 +37,6 @@ public class AdminUserController {
     @Setter
     private BaseService<AdminUser> baseService;
 
-    //FIXME should move to service...
-    @Autowired
-    private PasswordHelper passwordHelper;
-
     @RequestMapping(value = "/admin/users",method = RequestMethod.GET)
     public String listProducts(Model model){
         return "/adminuser/list";
@@ -50,7 +46,6 @@ public class AdminUserController {
     public Object saveOrUpdatepassword(AdminUser user){
         RESTResponseDTO rs=new RESTResponseDTO();
         rs.setProcCode(200);
-        passwordHelper.encryptPassword(user);
         adminUser.insertOrUpdateAdminUser(user);
         rs.setMessage("save or update success!");
         return rs;
