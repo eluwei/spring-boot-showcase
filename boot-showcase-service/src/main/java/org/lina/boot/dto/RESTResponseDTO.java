@@ -11,7 +11,7 @@ public class RESTResponseDTO implements Serializable {
 
 	private int procCode;
 	private Object payload;
-	private StringBuffer message;
+	private StringBuffer message=new StringBuffer(100);
 	private Exception exception;
 
 	public RESTResponseDTO execSuccess(){

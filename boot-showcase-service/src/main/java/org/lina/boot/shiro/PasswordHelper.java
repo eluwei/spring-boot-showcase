@@ -44,13 +44,8 @@ public class PasswordHelper {
                 user.getPassword(),
                 ByteSource.Util.bytes(user.getCredentialsSalt()),
                 hashIterations).toHex();
-        String newConfirmPassword = new SimpleHash(
-                algorithmName,
-                user.getConfirmPassword(),
-                ByteSource.Util.bytes(user.getCredentialsSalt()),
-                hashIterations).toHex();
         user.setPassword(newPassword);
-        user.setConfirmPassword(newConfirmPassword);
+
     }
 
     public String encryptPassword(String plainPassword,String salt){

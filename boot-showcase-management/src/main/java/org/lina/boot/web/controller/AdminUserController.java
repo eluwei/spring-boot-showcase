@@ -44,7 +44,11 @@ public class AdminUserController implements BaseController{
     @RequestMapping(value = "/admin/users",method = RequestMethod.POST)
     @ResponseBody
     public Object saveOrUpdatepassword(AdminUser user){
-        adminUser.insertOrUpdateAdminUser(user);
+        if(user.getId() == null || user.getId() == -1){
+            adminUser.insertAdminUser(user);
+        }else{
+            adminUser.updateAdminUserPassword(user);
+        }
         return RESTResponseDTO.create().execSuccess().addMessage("save or update success!");
     }
 

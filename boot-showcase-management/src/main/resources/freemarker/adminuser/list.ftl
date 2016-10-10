@@ -155,7 +155,7 @@
                          $("#editAdminUser").modal("hide");
                          $('#adminUsers').DataTable().ajax.reload();
                      }else{
-                         alert("失败了。");
+                         bootbox.alert(data.message);
                      }
 
                  }

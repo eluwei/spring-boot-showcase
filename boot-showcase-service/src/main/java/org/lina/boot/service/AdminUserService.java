@@ -15,6 +15,7 @@ import java.util.List;
 public interface AdminUserService {
     public AdminUser loadByUserName(String userName);
     public List<AdminUser> listUsers(String q);
-    public boolean insertOrUpdateAdminUser(AdminUser user);
+    public boolean insertAdminUser(AdminUser user);
+    public boolean updateAdminUserPassword(AdminUser user);
     public boolean changePassword(String userName,String oldPassword,String newPassword,String confirmPassword);
 }
