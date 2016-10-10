@@ -374,5 +374,8 @@ body{overflow-y: hidden;}
 /**jquery validate样式*/
 label.error { background-position: 4px -253px;color: #B52726; }
 
+/**左侧导航**/
+#left li {list-style: none;}
+
 
 
