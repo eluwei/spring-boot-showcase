@@ -56,7 +56,7 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
         Preconditions.checkNotNull(user);
         Preconditions.checkNotNull(user.getPassword());
         Preconditions.checkNotNull(user.getConfirmPassword());
-        Preconditions.checkArgument(user.getConfirmPassword().equals(user.getPassword()),"确认密码不匹配!!");
+        Preconditions.checkArgument(user.getConfirmPassword().equals(user.getPassword()), "确认密码不匹配!!");
         AdminUser updateUser=new AdminUser();
         updateUser.setId(user.getId());
         updateUser.setUserName(user.getUserName());
@@ -77,6 +77,7 @@ public class AdminUserServiceImpl extends BaseService<AdminUser> implements Admi
         AdminUser user = loadByUserName(userName);
         Preconditions.checkArgument(user.getPassword().equals(passwordHelper.encryptPassword(oldPassword, user.getCredentialsSalt())));
         user.setPassword(newPassword);
+        user.setConfirmPassword(confirmPassword);
         return updateAdminUserPassword(user);
     }
 }

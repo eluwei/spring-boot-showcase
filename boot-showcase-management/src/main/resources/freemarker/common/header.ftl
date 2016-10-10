@@ -55,10 +55,12 @@
                                             //contentType:"application/json",
                                             success:function(data){
                                                 if(data.procCode == 200){
-                                                    bootbox.hideAll();
+                                                    bootbox.alert(data.message,function(){
+                                                        bootbox.hideAll();
+                                                    });
 													return true;
                                                 }else{
-                                                    alert("失败了。");
+                                                    bootbox.alert("密码输入有误！！");
 													return false;
                                                 }
 
@@ -98,7 +100,7 @@
                 <label for="_password" class="control-label">新密码:</label>
             </div>
             <div class="col-sm-10">
-                <input type="password" class="form-control required" id="_password" placeholder="新密码" name="_password" value="{{password}}">
+                <input type="password" class="form-control required" id="_password" placeholder="新密码" name="password" value="{{password}}">
             </div>
         </div>
               <div class="form-group">
@@ -106,7 +108,7 @@
                   <label for="_confirmPassword" class="control-label">确认密码:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="password" equalTo="_password" class="form-control required" id="_confirmPassword" placeholder="再输一次" name="confirmPassword" value="{{password}}">
+                  <input type="password" equalTo="#_password" class="form-control required" id="_confirmPassword" placeholder="再输一次" name="confirmPassword" value="{{password}}">
                 </div>
               </div>
     </form>
