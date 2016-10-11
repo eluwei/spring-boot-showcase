@@ -24,13 +24,13 @@ public class CardServiceTest {
     public void setUp() throws Exception {
         service = new CardServiceImpl();
         dao = Mockito.mock(CardMapper.class);
-        service.setCardMapper(dao);
+        service.setMapper(dao);
     }
     @Test
     public void testWithMockito() {
         Card mockCard = new Card();
         mockCard.setComments("just mock get.");
         Mockito.when(dao.selectByPrimaryKey("test_find_by_id")).thenReturn(mockCard);
-        assertThat(service.getById("test_find_by_id").getComments()).isEqualTo("just mock get.");
+        assertThat(service.get("test_find_by_id").getComments()).isEqualTo("just mock get.");
     }
 }

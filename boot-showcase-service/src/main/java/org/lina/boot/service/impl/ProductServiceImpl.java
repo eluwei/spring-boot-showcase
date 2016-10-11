@@ -55,7 +55,9 @@ public class ProductServiceImpl extends BaseService<Product> {
     }
 
     public List<SKU> listSkuByProductId(long productId) {
-        return skuDao.listSkusByProductId(productId);
+        Example query = new Example(SKU.class);
+        query.createCriteria().andCondition("productId",productId);
+        return skuDao.selectByExample(query);
     }
 
     @Transactional
