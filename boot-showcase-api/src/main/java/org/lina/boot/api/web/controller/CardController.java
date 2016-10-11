@@ -2,8 +2,9 @@ package org.lina.boot.api.web.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import org.lina.boot.api.web.dto.CardDTO;
-import org.lina.boot.service.CardService;
+import org.lina.boot.service.impl.CardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,18 +24,21 @@ import java.util.List;
 public class CardController {
 
     @Autowired
-    private CardService cardService;
+    private CardServiceImpl cardService;
 
     @RequestMapping
-    public List<CardDTO> listAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "1") int pageSize) {
+    public List<CardDTO> listAll(@RequestParam(value = "q",defaultValue = "") String q,@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "1") int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return CardDTO.transForm(cardService.list());
+        if(Strings.isNullOrEmpty(q)){
+            return CardDTO.transForm(cardService.getAll());
+        }
+        return CardDTO.transForm(cardService.search(q));
     }
 
     @RequestMapping("/{id}")
     public CardDTO cardDetail(@PathVariable(value = "id") String id) {
         Preconditions.checkNotNull(id);
-        return new CardDTO(cardService.getById(id));
+        return new CardDTO(cardService.get(id));
     }
 
 }

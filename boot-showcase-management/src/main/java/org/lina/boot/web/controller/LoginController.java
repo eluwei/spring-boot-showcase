@@ -4,13 +4,22 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.model.AdminUser;
+import org.lina.boot.service.AdminUserService;
+import org.lina.boot.shiro.CurrentUser;
+import org.lina.boot.shiro.PasswordHelper;
+import org.lina.boot.shiro.ShiroUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +28,24 @@ import javax.servlet.http.HttpServletResponse;
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 @Controller
-public class LoginController {
+public class LoginController implements BaseController{
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-	
+
+
+
+    @Autowired
+    AdminUserService userService;
+
+
+    @RequestMapping(value = "/password",method = RequestMethod.POST)
+    @ResponseBody
+    public Object changePassword(@RequestParam("oldPassword")String oldPassword,
+                                 @RequestParam("password")String password,
+                                 @RequestParam("confirmPassword")String confirmPassword){
+        String userName= CurrentUser.name();
+         userService.changePassword(userName,oldPassword,password,confirmPassword);
+        return RESTResponseDTO.create().execSuccess().addMessage("修改密码成功！！");
+    }
 	
 	/**
 	 * 展现登录页

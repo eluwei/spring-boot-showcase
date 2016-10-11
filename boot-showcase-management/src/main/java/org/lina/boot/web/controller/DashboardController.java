@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by foy on 2016-06-14.
  */
 @Controller
-public class DashboardController {
+public class DashboardController implements BaseController{
 
     @RequestMapping("/")
     public String dashboard(){

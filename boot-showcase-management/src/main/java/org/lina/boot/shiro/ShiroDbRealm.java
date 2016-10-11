@@ -9,6 +9,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.lina.boot.model.AdminUser;
 import org.lina.boot.service.AdminUserService;
 
@@ -47,7 +48,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             AdminUser adminUser = adminUserService.loadByUserName(token.getUsername());
                 if(adminUser!=null && !adminUser.isEmptyUser()){
                     return new SimpleAuthenticationInfo(new ShiroUser(adminUser.getId(), adminUser.getUserName(), adminUser.getUserName()),
-                            adminUser.getPassword(),adminUser.getUserName());
+                            adminUser.getPassword(),ByteSource.Util.bytes(adminUser.getCredentialsSalt()),adminUser.getUserName());
                 }
 
         }

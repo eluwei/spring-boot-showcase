@@ -18,6 +18,8 @@ CREATE TABLE `admin_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `salt` varchar(100) DEFAULT NULL,
+  UNIQUE KEY `uq_unique_login_name` (`user_name`) USING BTREE,
   PRIMARY KEY (`id`)
 );
 
