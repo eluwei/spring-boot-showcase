@@ -11,3 +11,6 @@ spring boot栗子
   api:     json服务模块
   web:     传统前台模块
   management: 后台模块
+  
+  开发手册：
+  https://www.gitbook.com/book/flian/lina/welcome
