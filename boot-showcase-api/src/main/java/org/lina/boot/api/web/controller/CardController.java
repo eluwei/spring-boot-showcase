@@ -4,8 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import org.lina.boot.api.web.dto.CardDTO;
-import org.lina.boot.model.Card;
-import org.lina.boot.service.BaseService;
 import org.lina.boot.service.impl.CardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
