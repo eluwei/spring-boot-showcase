@@ -1,6 +1,7 @@
 package org.lina.boot.service.impl;
 
 
+import com.google.common.base.Strings;
 import org.apache.log4j.Logger;
 import org.lina.boot.dao.ProductMapper;
 import org.lina.boot.dao.SKUMapper;
@@ -10,6 +11,7 @@ import org.lina.boot.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -29,7 +31,17 @@ public class ProductServiceImpl extends BaseService<Product> {
 
 
     public List<Product> listProducts(String q) {
-        return productDao.listProducts(q);
+        if(Strings.isNullOrEmpty(q)){
+            return productDao.selectAll();
+        }else{
+            Example query = new Example(Product.class);
+            String lq="%"+q+"%";
+            query.or().andLike("name", lq);
+            query.or().andLike("description", lq);
+            query.or().andLike("longDescription", lq);
+            return productDao.selectByExample(query);
+        }
+
     }
 
     public SKU getSku(long skuId){
