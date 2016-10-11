@@ -13,4 +13,4 @@ spring boot栗子
   management: 后台模块
   
   开发手册：
-  https://www.gitbook.com/book/flian/lina/welcome
+    https://flian.gitbooks.io/lina/content/
