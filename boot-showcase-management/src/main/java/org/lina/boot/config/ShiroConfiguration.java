@@ -15,6 +15,7 @@ import org.apache.shiro.web.filter.authc.UserFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.lina.boot.service.AdminUserService;
+import org.lina.boot.shiro.Filter.FormWithKaptchaCodeAuthFilter;
 import org.lina.boot.shiro.ShiroDbRealm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,7 +110,7 @@ public class ShiroConfiguration {
         //验证码
         filterChainDefinitionMapping.put("/kaptchaImage", "anon");
         //登录
-        filterChainDefinitionMapping.put("/doLogin", "anon");
+        //filterChainDefinitionMapping.put("/login", "anon");
 
         filterChainDefinitionMapping.put("/logout","logout");
         //FIXME 暂时全部放开，等调整好了关闭
@@ -119,7 +120,9 @@ public class ShiroConfiguration {
         shiroFilter.setSecurityManager(securityManager);
         Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("anon", new AnonymousFilter());
-        filters.put("authc", new FormAuthenticationFilter());
+        //filters.put("authc", new FormAuthenticationFilter());
+        //使用带验证码功能的认证
+        filters.put("authc", new FormWithKaptchaCodeAuthFilter());
         filters.put("logout", new LogoutFilter());
         filters.put("roles", new RolesAuthorizationFilter());
         filters.put("user", new UserFilter());
