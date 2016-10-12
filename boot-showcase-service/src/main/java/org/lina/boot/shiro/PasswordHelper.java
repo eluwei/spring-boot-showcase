@@ -1,5 +1,6 @@
 package org.lina.boot.shiro;
 
+import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -21,7 +22,7 @@ public class PasswordHelper {
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
 
     @Autowired
-    HashedCredentialsMatcher credentialsMatcher;
+    CredentialsMatcher credentialsMatcher;
 
     private String algorithmName = "md5";
 
@@ -35,15 +36,15 @@ public class PasswordHelper {
         this.algorithmName = algorithmName;
     }
     public String getAlgorithmName(){
-        if(credentialsMatcher !=null){
-            return credentialsMatcher.getHashAlgorithmName();
+        if(credentialsMatcher !=null && (credentialsMatcher instanceof HashedCredentialsMatcher)){
+            return ((HashedCredentialsMatcher)credentialsMatcher).getHashAlgorithmName();
         }
         return algorithmName;
     }
 
     public int getHashIterations(){
-        if(credentialsMatcher !=null) {
-            return credentialsMatcher.getHashIterations();
+        if(credentialsMatcher !=null && (credentialsMatcher instanceof HashedCredentialsMatcher)) {
+            return ((HashedCredentialsMatcher)credentialsMatcher).getHashIterations();
         }
         return hashIterations;
     }
