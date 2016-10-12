@@ -1,4 +1,4 @@
-package org.lina.boot.web.controller;
+package org.lina.boot;
 
 import org.lina.boot.dto.RESTResponseDTO;
 import org.springframework.web.bind.annotation.ExceptionHandler;

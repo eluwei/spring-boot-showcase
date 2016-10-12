@@ -1,5 +1,6 @@
 package org.lina.boot.web.controller;
 
+import org.lina.boot.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by foy on 2016-06-14.
  */
 @Controller
-public class DashboardController implements BaseController{
+public class DashboardController implements BaseController {
 
     @RequestMapping("/")
     public String dashboard(){

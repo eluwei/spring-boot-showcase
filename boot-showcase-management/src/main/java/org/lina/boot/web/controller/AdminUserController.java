@@ -4,12 +4,12 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.Getter;
 import lombok.Setter;
+import org.lina.boot.BaseController;
 import org.lina.boot.dto.RESTResponseDTO;
 import org.lina.boot.model.AdminUser;
 import org.lina.boot.model.Product;
 import org.lina.boot.service.AdminUserService;
 import org.lina.boot.service.BaseService;
-import org.lina.boot.shiro.PasswordHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * Time: 11:30
  */
 @Controller
-public class AdminUserController implements BaseController{
+public class AdminUserController implements BaseController {
 
     private  static String [] COLUMNS=new String[]{"id","userName","password","confirmPassword"};
 

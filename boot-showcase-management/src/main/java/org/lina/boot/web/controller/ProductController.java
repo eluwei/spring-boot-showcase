@@ -2,7 +2,7 @@ package org.lina.boot.web.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import org.lina.boot.BaseController;
 import org.lina.boot.dto.RESTResponseDTO;
 import org.lina.boot.model.Product;
 import org.lina.boot.model.SKU;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by foy on 2016-06-01.
  */
 @Controller
-public class ProductController implements BaseController{
+public class ProductController implements BaseController {
 
     private  static String [] COLUMNS=new String[]{"id","name","description","long_description"};
 

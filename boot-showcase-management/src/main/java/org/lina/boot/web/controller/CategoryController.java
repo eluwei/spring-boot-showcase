@@ -1,6 +1,7 @@
 package org.lina.boot.web.controller;
 
 
+import org.lina.boot.BaseController;
 import org.lina.boot.dto.RESTResponseDTO;
 import org.lina.boot.model.Category;
 import org.lina.boot.service.BaseService;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/categories")
-public class CategoryController implements BaseController{
+public class CategoryController implements BaseController {
 
     @Resource(name="categoryService")
     BaseService<Category> categoryService;
