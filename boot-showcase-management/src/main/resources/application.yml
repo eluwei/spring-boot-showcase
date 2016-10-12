@@ -1,10 +1,5 @@
 server:
     port: 8081
-    shiro:
-        encrypt:
-            hashAlgorithmName: md5
-            hashIterations: 2
-            storedCredentialsHexEncoded: true
 spring:
     datasource:
         name: test
@@ -35,3 +30,8 @@ spring:
         contentType: text/html;charset=utf-8
         requestContextAttribute: rc
         exposeSpringMacroHelpers: true
+shiro:
+    encrypt:
+        hashAlgorithmName: md5
+        hashIterations: 2
+        storedCredentialsHexEncoded: true
