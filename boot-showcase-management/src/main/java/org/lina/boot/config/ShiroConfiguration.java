@@ -2,6 +2,7 @@ package org.lina.boot.config;
 
 
 import com.jagregory.shiro.freemarker.ShiroTags;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -20,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -47,17 +49,18 @@ public class ShiroConfiguration {
     }
 
     @Bean(name = "myShiroRealm")
-    public ShiroDbRealm myShiroRealm(EhCacheManager cacheManager,AdminUserService userService) {
+    public ShiroDbRealm myShiroRealm(EhCacheManager cacheManager,AdminUserService userService,CredentialsMatcher credentialsMatcher) {
         ShiroDbRealm realm = new ShiroDbRealm();
         realm.setCacheManager(cacheManager);
         realm.setAdminUserService(userService);
-        HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
-
-        matcher.setHashAlgorithmName("md5");
-        matcher.setHashIterations(2);
-        matcher.setStoredCredentialsHexEncoded(true);
-        realm.setCredentialsMatcher(matcher);
+        realm.setCredentialsMatcher(credentialsMatcher);
         return realm;
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix="shiro.encrypt")
+    public CredentialsMatcher getCredentialsMatcher(){
+        return new HashedCredentialsMatcher();
     }
 
 

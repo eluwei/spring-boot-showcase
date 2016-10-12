@@ -1,5 +1,10 @@
 server:
     port: 8081
+    shiro:
+        encrypt:
+            hashAlgorithmName: md5
+            hashIterations: 2
+            storedCredentialsHexEncoded: true
 spring:
     datasource:
         name: test

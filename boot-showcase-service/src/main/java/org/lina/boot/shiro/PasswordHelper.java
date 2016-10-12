@@ -1,10 +1,12 @@
 package org.lina.boot.shiro;
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.lina.boot.model.AdminUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +20,8 @@ public class PasswordHelper {
 
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
 
+    @Autowired
+    HashedCredentialsMatcher credentialsMatcher;
 
     private String algorithmName = "md5";
 
@@ -30,6 +34,19 @@ public class PasswordHelper {
     public void setAlgorithmName(String algorithmName) {
         this.algorithmName = algorithmName;
     }
+    public String getAlgorithmName(){
+        if(credentialsMatcher !=null){
+            return credentialsMatcher.getHashAlgorithmName();
+        }
+        return algorithmName;
+    }
+
+    public int getHashIterations(){
+        if(credentialsMatcher !=null) {
+            return credentialsMatcher.getHashIterations();
+        }
+        return hashIterations;
+    }
 
     public void setHashIterations(int hashIterations) {
         this.hashIterations = hashIterations;
@@ -40,20 +57,20 @@ public class PasswordHelper {
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
 
         String newPassword = new SimpleHash(
-                algorithmName,
+                getAlgorithmName(),
                 user.getPassword(),
                 ByteSource.Util.bytes(user.getCredentialsSalt()),
-                hashIterations).toHex();
+                getHashIterations()).toHex();
         user.setPassword(newPassword);
 
     }
 
     public String encryptPassword(String plainPassword,String salt){
         return new SimpleHash(
-                algorithmName,
+                getAlgorithmName(),
                 plainPassword,
                 ByteSource.Util.bytes(salt),
-                hashIterations).toHex();
+                getHashIterations()).toHex();
     }
 
     public static void main(String[] args) {
