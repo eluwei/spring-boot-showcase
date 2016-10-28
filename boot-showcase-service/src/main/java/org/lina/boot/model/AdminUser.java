@@ -1,11 +1,17 @@
 package org.lina.boot.model;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +36,12 @@ public class AdminUser {
     @Setter
     private String salt;
 
+    @Getter
+    @Setter
+    private String roles;
+
+    public static final String ROLE_STR_SPLIPTER=",";
+
     public AdminUser(){
 
     }
@@ -50,6 +62,15 @@ public class AdminUser {
     }
     public String getCredentialsSalt(){
         return userName+salt;
+    }
+    public Set<String> roles(){
+        if(Strings.isNullOrEmpty(roles)){
+            return Collections.emptySet();
+        }
+        return ImmutableSet.copyOf(roles.split(ROLE_STR_SPLIPTER));
+    }
+    public static String toRoles(String [] roles){
+        return Joiner.on(ROLE_STR_SPLIPTER).join(roles);
     }
 
 }

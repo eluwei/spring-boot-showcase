@@ -23,6 +23,7 @@ public class ShiroUser implements Serializable {
 
     public Long id;
 
+    @Getter
     public String loginName;
 
     public String name;
