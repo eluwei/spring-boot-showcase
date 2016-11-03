@@ -21,7 +21,7 @@ public class PasswordHelper {
 
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
 
-    @Autowired
+    @Autowired(required = false)
     CredentialsMatcher credentialsMatcher;
 
     private String algorithmName = "md5";

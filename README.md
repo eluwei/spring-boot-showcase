@@ -11,3 +11,8 @@ spring boot栗子
   api:     json服务模块
   web:     传统前台模块
   management: 后台模块
+  
+  ``` API ```
+  start APIMain:
+  view:
+  http://localhost:8081/api/V1/swagger-ui.html for default swagger API docs & server 
