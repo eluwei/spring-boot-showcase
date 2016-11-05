@@ -8,6 +8,7 @@
     <context id="MySql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
             <property name="beginningDelimiter" value="`"/>
             <property name="endingDelimiter" value="`"/>
+            <property name="javaFileEncoding" value="utf-8"/>
 
             <plugin type="${mapper.plugin}">
                 <property name="mappers" value="${mapper.Mapper}"/>
@@ -32,6 +33,7 @@
         <table tableName="test" domainObjectName="Test">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+
         <!--
             <table tableName="%" >
                 <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
