@@ -10,16 +10,17 @@ DROP TABLE IF EXISTS `sku`;
 
 
 CREATE TABLE `test` (
-  `id` bigint(20) NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `usertype` varchar(255) DEFAULT NULL,
-  `enabled` smallint(6) DEFAULT NULL,
-  `realname` varchar(255) DEFAULT NULL,
-  `qq` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `tel` varchar(255) DEFAULT NULL,
-  `createdate` date DEFAULT NULL,
+  `id` bigint(20) NOT NULL COMMENT '主键',
+  `username` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `user_type` varchar(255) DEFAULT NULL COMMENT '用户类型',
+  `enabled` smallint(6) DEFAULT NULL COMMENT '是否可用',
+  `real_name` varchar(255) DEFAULT NULL COMMENT '真实姓名',
+  `qq` varchar(255) DEFAULT NULL COMMENT 'qq',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮件',
+  `tel` varchar(255) DEFAULT NULL COMMENT '电话',
+  `reg_date` date DEFAULT NULL COMMENT '注册时间',
+  `files` blob COMMENT '测试大字段生成',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
