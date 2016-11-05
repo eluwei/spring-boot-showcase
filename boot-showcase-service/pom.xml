@@ -98,10 +98,12 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
+                        <version>${jdbc.mysql.verison}</version>
                     </dependency>
                     <dependency>
                         <groupId>tk.mybatis</groupId>
                         <artifactId>mapper</artifactId>
+                        <version>${tk.mybatis.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
