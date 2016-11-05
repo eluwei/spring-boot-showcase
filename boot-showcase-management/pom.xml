@@ -23,6 +23,10 @@
     <dependencies>
         <dependency>
             <groupId>org.lina.boot</groupId>
+            <artifactId>boot-showcase-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.lina.boot</groupId>
             <artifactId>boot-showcase-service</artifactId>
         </dependency>
         <dependency>

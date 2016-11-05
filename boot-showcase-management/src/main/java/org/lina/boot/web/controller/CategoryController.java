@@ -1,6 +1,7 @@
 package org.lina.boot.web.controller;
 
 
+import org.lina.boot.BaseController;
 import org.lina.boot.dto.RESTResponseDTO;
 import org.lina.boot.model.Category;
 import org.lina.boot.service.BaseService;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/categories")
-public class CategoryController {
+public class CategoryController implements BaseController {
 
     @Resource(name="categoryService")
     BaseService<Category> categoryService;
@@ -49,10 +50,7 @@ public class CategoryController {
             }
             case "d":{
                 categoryService.deleteByPrimaryKey(categoryId);
-                RESTResponseDTO rs=new RESTResponseDTO();
-                rs.setProcCode(200);
-                rs.setMessage("delete success!");
-                return rs;
+                return RESTResponseDTO.create().execSuccess().addMessage("delete success!");
             }
 
         }

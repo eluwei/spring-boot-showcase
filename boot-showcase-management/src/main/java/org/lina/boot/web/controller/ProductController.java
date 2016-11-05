@@ -2,7 +2,7 @@ package org.lina.boot.web.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import org.lina.boot.BaseController;
 import org.lina.boot.dto.RESTResponseDTO;
 import org.lina.boot.model.Product;
 import org.lina.boot.model.SKU;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by foy on 2016-06-01.
  */
 @Controller
-public class ProductController {
+public class ProductController implements BaseController {
 
     private  static String [] COLUMNS=new String[]{"id","name","description","long_description"};
 
@@ -57,10 +57,9 @@ public class ProductController {
     @RequestMapping(value = "/products",method = RequestMethod.POST)
     @ResponseBody
     public Object saveOrUpdateProduct(Product product){
-        RESTResponseDTO rs=new RESTResponseDTO();
-        rs.setProcCode(200);
+        RESTResponseDTO rs= RESTResponseDTO.create();
        productService.insertOrUpdateProduct(product);
-        rs.setMessage("save or update success!");
+        rs.execSuccess().addMessage("save or update success!");
         return rs;
     }
 
@@ -118,7 +117,7 @@ public class ProductController {
         rs.setProcCode(200);
         sku.setProductId(productId);
         productService.insertOrUpdateSKU(sku);
-        rs.setMessage("save or udapte sku success.");
+        rs.addMessage("save or udapte sku success.");
         return rs;
     }
 
@@ -128,7 +127,7 @@ public class ProductController {
         RESTResponseDTO rs=new RESTResponseDTO();
         rs.setProcCode(200);
         productService.delSku(skuId);
-        rs.setMessage("delete sku success.");
+        rs.addMessage("delete sku success.");
         return rs;
     }
 }

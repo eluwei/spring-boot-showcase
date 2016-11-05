@@ -2,23 +2,26 @@ package org.lina.boot.config;
 
 
 import com.jagregory.shiro.freemarker.ShiroTags;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.AnonymousFilter;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.filter.authc.UserFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.lina.boot.service.AdminUserService;
+import org.lina.boot.shiro.Filter.FormWithKaptchaCodeAuthFilter;
 import org.lina.boot.shiro.ShiroDbRealm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -46,11 +49,18 @@ public class ShiroConfiguration {
     }
 
     @Bean(name = "myShiroRealm")
-    public ShiroDbRealm myShiroRealm(EhCacheManager cacheManager,AdminUserService userService) {
+    public ShiroDbRealm myShiroRealm(EhCacheManager cacheManager,AdminUserService userService,CredentialsMatcher credentialsMatcher) {
         ShiroDbRealm realm = new ShiroDbRealm();
         realm.setCacheManager(cacheManager);
         realm.setAdminUserService(userService);
+        realm.setCredentialsMatcher(credentialsMatcher);
         return realm;
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix="shiro.encrypt")
+    public CredentialsMatcher getCredentialsMatcher(){
+        return new HashedCredentialsMatcher();
     }
 
 
@@ -99,7 +109,7 @@ public class ShiroConfiguration {
         //验证码
         filterChainDefinitionMapping.put("/kaptchaImage", "anon");
         //登录
-        filterChainDefinitionMapping.put("/doLogin", "anon");
+        //filterChainDefinitionMapping.put("/login", "anon");
 
         filterChainDefinitionMapping.put("/logout","logout");
         //FIXME 暂时全部放开，等调整好了关闭
@@ -109,7 +119,9 @@ public class ShiroConfiguration {
         shiroFilter.setSecurityManager(securityManager);
         Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("anon", new AnonymousFilter());
-        filters.put("authc", new FormAuthenticationFilter());
+        //filters.put("authc", new FormAuthenticationFilter());
+        //使用带验证码功能的认证
+        filters.put("authc", new FormWithKaptchaCodeAuthFilter());
         filters.put("logout", new LogoutFilter());
         filters.put("roles", new RolesAuthorizationFilter());
         filters.put("user", new UserFilter());

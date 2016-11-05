@@ -9,8 +9,12 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.lina.boot.model.AdminUser;
 import org.lina.boot.service.AdminUserService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,7 +35,8 @@ public class ShiroDbRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         //FixMe should load form db
         ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        AdminUser adminUser = adminUserService.loadByUserName(shiroUser.getLoginName());
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(adminUser.roles());
         return info;
     }
 
@@ -41,13 +46,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
-        //FixMe 密码需要加密
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         if(!Strings.isNullOrEmpty(token.getUsername())){
             AdminUser adminUser = adminUserService.loadByUserName(token.getUsername());
                 if(adminUser!=null && !adminUser.isEmptyUser()){
                     return new SimpleAuthenticationInfo(new ShiroUser(adminUser.getId(), adminUser.getUserName(), adminUser.getUserName()),
-                            adminUser.getPassword(),adminUser.getUserName());
+                            adminUser.getPassword(),ByteSource.Util.bytes(adminUser.getCredentialsSalt()),adminUser.getUserName());
                 }
 
         }

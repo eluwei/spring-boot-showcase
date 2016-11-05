@@ -8,9 +8,9 @@
 <body class='login'>
 	<div class="wrapper">
 		<div class="login-body">
-			<h2>登录Tiger</h2>
+			<h2>登录LINA</h2>
 			
-			<form action="${rc.contextPath}/doLogin" method='post' class='form-validate' id="test">
+			<form action="${rc.contextPath}/login" method='post' class='form-validate' id="test">
 				<#if errorMsg??>
 				<span class="help-block has-error">${errorMsg}</span>
 				</#if>

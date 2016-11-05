@@ -371,4 +371,11 @@ body{overflow-y: hidden;}
 #personDeliveryAddress {height: auto !important;}
 #storeDeliveryAddress {height: auto !important;}
 
+/**jquery validate样式*/
+label.error { background-position: 4px -253px;color: #B52726; }
+
+/**左侧导航**/
+#left li {list-style: none;}
+
+
 

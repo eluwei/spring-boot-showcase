@@ -2,8 +2,11 @@ INSERT INTO `cards` (`ID`, `cardId`, `faceValue`, `frozenValue`, `balanceValue`,
 INSERT INTO `cards` (`ID`, `cardId`, `faceValue`, `frozenValue`, `balanceValue`, `comments`) VALUES ('ID2', 'cardID_22', '22.00', '2.00', '22.00', 'cardID_2 comments');
 
 
-INSERT INTO `admin_user` (`user_name`, `password`) VALUES ('admin','admin');
 
+-- ----------------------------
+-- Records of admin_user: admin::admin
+-- ----------------------------
+INSERT INTO `admin_user` (`user_name`, `password`,`salt`) VALUES ('1', 'admin', 'a1260e9840246d8e8d1b0d7c6eafb39b', '1351ded4f91edb14f9fb6da3a35d4153');
 
 INSERT INTO `product` VALUES ('1', '三叶草', '小资生活', '鞋子、衣服、裤子', '35', '0');
 INSERT INTO `product` VALUES ('2', '小米note4', '小米note4', '小米（MI） 红米Note4 新品上市！十核处理器，4100mAh电池，千元旗舰新标', '20', '0');
