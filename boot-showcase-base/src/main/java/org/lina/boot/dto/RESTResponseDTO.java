@@ -18,6 +18,11 @@ public class RESTResponseDTO implements Serializable {
 		procCode=200;
 		return this;
 	}
+	public RESTResponseDTO execSuccess(Object data){
+		procCode = 200;
+		payload = data;
+		return this;
+	}
 	public RESTResponseDTO execFailue(){
 		procCode=99999;
 		return this;
