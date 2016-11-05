@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `test`;
 DROP TABLE IF EXISTS `CARDS`;
 DROP TABLE IF EXISTS `admin_user`;
 DROP TABLE IF EXISTS `admin_roles`;
@@ -7,6 +8,20 @@ DROP TABLE IF EXISTS `category`;
 DROP TABLE IF EXISTS `product`;
 DROP TABLE IF EXISTS `sku`;
 
+
+CREATE TABLE `test` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `usertype` varchar(255) DEFAULT NULL,
+  `enabled` smallint(6) DEFAULT NULL,
+  `realname` varchar(255) DEFAULT NULL,
+  `qq` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
+  `createdate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE CARDS
 (
