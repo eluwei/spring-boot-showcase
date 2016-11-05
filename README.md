@@ -12,6 +12,10 @@ spring boot栗子
   web:     传统前台模块
   management: 后台模块
   
+  开发手册：
+    https://flian.gitbooks.io/lina/content/
+  management: 后台模块
+  
   ``` API ```
   start APIMain:
   view:
