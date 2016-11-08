@@ -1,6 +1,6 @@
 ###spring boot栗子
 
-- 使用：```Java8， lombok```
+- 使用：`Java8， lombok`
 - 集成：mybatis,pagehelper,tk.mybatis
 - 使用： freemarker、jsp
 - 模块： api、webapp
@@ -8,11 +8,11 @@
 导入前确保使用Java8， lombok已经安装到集成开发环境（Eclispe、Idea）
 #####lombok新
 
- 官方： https://projectlombok.org/
- 注解API： https://projectlombok.org/features/index.html
+ 官方： [lombok home](https://projectlombok.org/)   
+ 注解API：[lombok api](https://projectlombok.org/features/index.html)
  
-编译前先导入sql目录中的schema、data (seed)数据，否则unit、service、functional test会失败
-如果不想管unit test，使用``` mvn package -Dmaven.test.skip=true```打包
+编译前先导入sql目录中的schema、data (seed)数据，否则unit、service、functional test会失败   
+如果不想管unit test，使用` mvn package -Dmaven.test.skip=true`打包
 
 ###模块： 
 +  base:        基础封装模块
@@ -32,9 +32,9 @@ TBD
 #### 从表生成 mybatis（tk mybatis） domain、dao、mapper
 
  调整 /boot-showcase-service/src/main/resources/mybatis-generator,
-  ```generator.properties``` and ```generatorConfig.xml```
+  `generator.properties` and `generatorConfig.xml`
  cmd 进入 /boot-showcase-service
- run ```mvn mybatis-generator:generate```
+ run `mvn mybatis-generator:generate`
  Dao、domain、mapper会生成到指定文件夹
  
 ###management
@@ -47,8 +47,8 @@ TBD
 
 start ManagementMain.java
 open browser to url:
-``` http://localhost:8081```
-management ship with a default user, ```admin/admin```
+http://localhost:8081
+management ship with a default user, `admin/admin`
 
 ###Web
 TBD
@@ -56,11 +56,10 @@ TBD
 ###API
 start APIMain.java
 open browser to url:
-``` http://localhost:8081/api/V1/swagger-ui.html```
+   http://localhost:8081/api/V1/swagger-ui.html
    for default swagger API docs & server
    
    
 ###开发手册：
-  ```
-    https://flian.gitbooks.io/lina/content/
-  ```
+[LINA manual](https://flian.gitbooks.io/lina/content/)
+ 
