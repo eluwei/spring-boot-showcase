@@ -47,7 +47,7 @@ TBD
 
 start ManagementMain.java
 open browser to url:
-http://localhost:8081
+[http://localhost:8081](http://localhost:8081)
 management ship with a default user, `admin/admin`
 
 ###Web
@@ -56,7 +56,7 @@ TBD
 ###API
 start APIMain.java
 open browser to url:
-   http://localhost:8081/api/V1/swagger-ui.html
+   [http://localhost:8081/api/V1/swagger-ui.html](http://localhost:8081/api/V1/swagger-ui.html)
    for default swagger API docs & server
    
    
