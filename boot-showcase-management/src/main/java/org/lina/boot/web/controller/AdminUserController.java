@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import lombok.Getter;
 import lombok.Setter;
 import org.lina.boot.BaseController;
-import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.dto.ResponseWapper;
 import org.lina.boot.model.AdminUser;
 import org.lina.boot.model.Product;
 import org.lina.boot.service.AdminUserService;
@@ -49,7 +49,7 @@ public class AdminUserController implements BaseController {
         }else{
             adminUser.updateAdminUserPassword(user);
         }
-        return RESTResponseDTO.create().execSuccess().addMessage("save or update success!");
+        return ResponseWapper.create().execSuccess().addMessage("save or update success!");
     }
 
     @RequestMapping("/admin/users/ajax")

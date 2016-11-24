@@ -3,7 +3,7 @@ package org.lina.boot.web.controller;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.lina.boot.BaseController;
-import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.dto.ResponseWapper;
 import org.lina.boot.model.Product;
 import org.lina.boot.model.SKU;
 import org.lina.boot.service.impl.CategoryServiceImpl;
@@ -57,7 +57,7 @@ public class ProductController implements BaseController {
     @RequestMapping(value = "/products",method = RequestMethod.POST)
     @ResponseBody
     public Object saveOrUpdateProduct(Product product){
-        RESTResponseDTO rs= RESTResponseDTO.create();
+        ResponseWapper rs= ResponseWapper.create();
        productService.insertOrUpdateProduct(product);
         rs.execSuccess().addMessage("save or update success!");
         return rs;
@@ -113,7 +113,7 @@ public class ProductController implements BaseController {
     @RequestMapping(value = "/products/{productId}/sku",method = RequestMethod.POST)
     @ResponseBody
     public Object saveOrUpdateSku(SKU sku,@PathVariable long productId){
-        RESTResponseDTO rs=new RESTResponseDTO();
+        ResponseWapper rs=new ResponseWapper();
         rs.setProcCode(200);
         sku.setProductId(productId);
         productService.insertOrUpdateSKU(sku);
@@ -124,7 +124,7 @@ public class ProductController implements BaseController {
     @RequestMapping(value = "/products/{productId}/sku/{skuId}/delete",method = RequestMethod.POST)
     @ResponseBody
     public Object deleteSku(@PathVariable long productId, @PathVariable long skuId){
-        RESTResponseDTO rs=new RESTResponseDTO();
+        ResponseWapper rs=new ResponseWapper();
         rs.setProcCode(200);
         productService.delSku(skuId);
         rs.addMessage("delete sku success.");

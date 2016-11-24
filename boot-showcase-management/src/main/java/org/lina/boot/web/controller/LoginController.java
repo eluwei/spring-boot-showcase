@@ -1,14 +1,12 @@
 package org.lina.boot.web.controller;
 
-import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.dto.ResponseWapper;
 import org.lina.boot.service.AdminUserService;
 import org.lina.boot.shiro.CurrentUser;
-import org.lina.boot.shiro.Filter.KaptchaInputException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +29,7 @@ public class LoginController{
                                  @RequestParam("confirmPassword")String confirmPassword){
         String userName= CurrentUser.name();
          userService.changePassword(userName,oldPassword,password,confirmPassword);
-        return RESTResponseDTO.create().execSuccess().addMessage("修改密码成功！！");
+        return ResponseWapper.create().execSuccess().addMessage("修改密码成功！！");
     }
 	
 	/**
