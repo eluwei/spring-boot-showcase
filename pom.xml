@@ -22,11 +22,11 @@
     </properties>
 
     <modules>
+        <module>boot-showcase-base</module>
         <module>boot-showcase-service</module>
         <module>boot-showcase-api</module>
         <module>boot-showcase-web</module>
         <module>boot-showcase-management</module>
-        <module>boot-showcase-base</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -226,17 +226,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>springloaded</artifactId>
-                        <version>1.2.0.RELEASE</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
