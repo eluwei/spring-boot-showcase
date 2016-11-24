@@ -2,6 +2,7 @@
 
 - 使用：`Java8， lombok`
 - 集成：mybatis,pagehelper,tk.mybatis
+- migration: 使用flywaydb
 - 使用： freemarker、jsp
 - 模块： api、webapp
 
@@ -11,7 +12,13 @@
  官方： [lombok home](https://projectlombok.org/)   
  注解API：[lombok api](https://projectlombok.org/features/index.html)
  
-编译前先导入sql目录中的schema、data (seed)数据，否则unit、service、functional test会失败   
+####flywaydb
+  官方[flywaydb](https://flywaydb.org/documentation/migration/)
+  默认会按照 
+  `V<VERSION>__<NAME>.sql (with <VERSION> an underscore-separated version, e.g. ‘1’ or ‘2_1’). `
+  spring boot关于
+  [flywaydb介绍](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-execute-flyway-database-migrations-on-startup)
+  
 如果不想管unit test，使用` mvn package -Dmaven.test.skip=true`打包
 
 ###模块： 
