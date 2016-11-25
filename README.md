@@ -58,7 +58,8 @@ open browser to url:
 management ship with a default user, `admin/admin`
 
 ###Web
-TBD
+- 使用webjars依赖。[webjars官方](http://www.webjars.org/classic)
+`由于使用了jsp，需要设置IDE的 working_dir=$MODULE_DIR$`
 
 ###API
 start APIMain.java
