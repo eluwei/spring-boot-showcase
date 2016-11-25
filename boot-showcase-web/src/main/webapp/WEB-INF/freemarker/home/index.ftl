@@ -1,6 +1,5 @@
 <#include "/layout/defaultLayout.ftl">
-<@defaultLayout title="首页">
-
+<@defaultLayout title="首页" css="static/css/sample.css" js="static/js/home/index.js">
 <body>
 <div class="cover">
     <div class="navbar">
@@ -26,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="cover-image" style="background-image: url(https://unsplash.imgix.net/photo-1418065460487-3e41a6c84dc5?q=25&amp;fm=jpg&amp;s=127f3a3ccf4356b7f79594e05f6c840e);"></div>
+    <div class="cover-image" style="background-image: url(/static/img/photo-cover.jpg);"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -34,7 +33,7 @@
                 <p class="text-inverse">Lorem ipsum dolor sit amet, consectetur adipisici eli.</p>
                 <br>
                 <br>
-                <a class="btn btn-lg btn-primary">Click me</a>
+                <a class="btn btn-lg btn-primary TBD">Click me</a>
             </div>
         </div>
     </div>
