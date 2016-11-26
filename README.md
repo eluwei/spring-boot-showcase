@@ -71,3 +71,7 @@ open browser to url:
 ###开发手册：
 [LINA manual](https://flian.gitbooks.io/lina/content/)
  
+### TODO
++ 完善权限
++ 除mysql外其他数据库的支持？如oracle
++ web前台show case完善
