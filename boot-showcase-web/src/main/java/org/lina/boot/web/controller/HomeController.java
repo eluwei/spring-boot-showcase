@@ -15,10 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Date: 2016-09-08
  * Time: 13:35
  */
+
 @Controller
 public class HomeController {
     @Autowired
     BaseService<Card> cardService;
+
+    @RequestMapping("/")
+    public String dashboard(){
+        return "/home/index";
+    }
 
     @RequestMapping("/home")
     public String homePage(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "1") int pageSize,ModelMap modelMap) {
@@ -33,4 +39,5 @@ public class HomeController {
         modelMap.put("cards",cardService.getAll());
         return "cards";
     }
+
 }

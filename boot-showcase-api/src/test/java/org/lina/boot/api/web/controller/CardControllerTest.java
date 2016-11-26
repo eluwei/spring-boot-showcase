@@ -28,7 +28,7 @@ public class CardControllerTest extends BaseFunctionalTest{
     @Before
     public void setup() {
         restTemplate = new TestRestTemplate();
-        cardListUrl = "http://localhost:" + port + "/cards";
+        cardListUrl = "http://localhost:" + port + ctx + "/cards";
     }
 
     @Test

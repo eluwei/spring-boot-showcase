@@ -2,7 +2,7 @@ package org.lina.boot.web.controller;
 
 
 import org.lina.boot.BaseController;
-import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.dto.ResponseWapper;
 import org.lina.boot.model.Category;
 import org.lina.boot.service.BaseService;
 import org.springframework.stereotype.Controller;
@@ -50,7 +50,7 @@ public class CategoryController implements BaseController {
             }
             case "d":{
                 categoryService.deleteByPrimaryKey(categoryId);
-                return RESTResponseDTO.create().execSuccess().addMessage("delete success!");
+                return ResponseWapper.create().execSuccess().addMessage("delete success!");
             }
 
         }

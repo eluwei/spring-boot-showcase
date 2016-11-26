@@ -1,14 +1,3 @@
-DROP TABLE IF EXISTS `test`;
-DROP TABLE IF EXISTS `CARDS`;
-DROP TABLE IF EXISTS `admin_user`;
-DROP TABLE IF EXISTS `admin_roles`;
-DROP TABLE IF EXISTS `admin_resources`;
-DROP TABLE IF EXISTS `rel_role_resource`;
-DROP TABLE IF EXISTS `category`;
-DROP TABLE IF EXISTS `product`;
-DROP TABLE IF EXISTS `sku`;
-
-
 CREATE TABLE `test` (
   `id` bigint(20) NOT NULL COMMENT '主键',
   `username` varchar(255) DEFAULT NULL COMMENT '用户名',

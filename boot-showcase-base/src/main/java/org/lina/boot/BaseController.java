@@ -1,6 +1,6 @@
 package org.lina.boot;
 
-import org.lina.boot.dto.RESTResponseDTO;
+import org.lina.boot.dto.ResponseWapper;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,7 +16,7 @@ public interface BaseController {
     default public Object exceptionHandle(Exception e) {
         return e == null?this.ResponseWrapper().addMessage("系统错误!").execFailue():(e.getMessage() == null?this.ResponseWrapper().addException(e).addMessage("系统错误!").execFailue():this.ResponseWrapper().addException(e).addMessage(e.getMessage()).execFailue());
     }
-    default RESTResponseDTO ResponseWrapper() {
-        return RESTResponseDTO.create();
+    default ResponseWapper ResponseWrapper() {
+        return ResponseWapper.create();
     }
 }

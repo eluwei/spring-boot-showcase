@@ -26,6 +26,8 @@ public abstract class BaseFunctionalTest {
     @Value("${local.server.port}")
     protected int port;
 
+    @Value("${server.context-path}")
+    protected String ctx;
 
     @Rule
     public TestRule testProgress = new TestProgress();

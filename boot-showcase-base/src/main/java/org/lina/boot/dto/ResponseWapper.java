@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class RESTResponseDTO implements Serializable {
+public class ResponseWapper implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 
@@ -14,28 +14,28 @@ public class RESTResponseDTO implements Serializable {
 	private StringBuffer message=new StringBuffer(100);
 	private Exception exception;
 
-	public RESTResponseDTO execSuccess(){
+	public ResponseWapper execSuccess(){
 		procCode=200;
 		return this;
 	}
-	public RESTResponseDTO execSuccess(Object data){
+	public ResponseWapper execSuccess(Object data){
 		procCode = 200;
 		payload = data;
 		return this;
 	}
-	public RESTResponseDTO execFailue(){
+	public ResponseWapper execFailue(){
 		procCode=99999;
 		return this;
 	}
-	public RESTResponseDTO addMessage(String msg){
+	public ResponseWapper addMessage(String msg){
 		message.append(msg);
 		return this;
 	}
-	public RESTResponseDTO addException(Exception ec){
+	public ResponseWapper addException(Exception ec){
 		exception = ec;
 		return this;
 	}
-	public static RESTResponseDTO create(){
-		return new RESTResponseDTO();
+	public static ResponseWapper create(){
+		return new ResponseWapper();
 	}
 }
