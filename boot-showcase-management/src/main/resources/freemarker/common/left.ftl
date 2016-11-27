@@ -10,7 +10,7 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="glyphicon glyphicon-cloud"></i>
-                <span class="menu-text"> 前台用户管理 </span>
+                <span class="menu-text"> 前台管理 </span>
 
                 <b class="arrow icon-angle-down"></b>
             </a>
