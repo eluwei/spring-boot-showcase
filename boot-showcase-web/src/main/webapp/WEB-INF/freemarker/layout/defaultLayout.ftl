@@ -21,8 +21,8 @@
     <script src="${rc.contextPath}/webjars/jquery/jquery.min.js"></script>
 
 <!-- bootstrap/bootbox  -->
-    <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
-    <script src="${rc.contextPath}/webjars/bootstrap/js/bootstrap.min.js"/>
+    <!--<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script> -->
+    <script src="${rc.contextPath}/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script src="${rc.contextPath}/webjars/bootbox/bootbox.js"></script>
 
 <!-- additional  javascript-->
