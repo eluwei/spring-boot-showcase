@@ -13,10 +13,10 @@ CREATE TABLE `test` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE CARDS
+CREATE TABLE cards
 (
-ID VARCHAR(50) PRIMARY KEY,
-cardId VARCHAR(25),
+id varchar(50) PRIMARY KEY,
+cardId varchar(25),
 faceValue decimal(9,2),
 frozenValue decimal(9,2),
 balanceValue decimal(9,2),
