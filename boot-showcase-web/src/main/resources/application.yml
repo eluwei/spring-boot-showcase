@@ -34,6 +34,8 @@ spring:
         contentType: text/html;charset=utf-8
         requestContextAttribute: rc
         exposeSpringMacroHelpers: true
+        settings:
+          auto_import: /layout/linaLayout.ftl as layout
 shiro:
     encrypt:
         hashAlgorithmName: md5

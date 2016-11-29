@@ -13,15 +13,15 @@ CREATE TABLE `test` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE CARDS
+CREATE TABLE cards
 (
-ID VARCHAR(50) PRIMARY KEY,
-cardId VARCHAR(25),
+id varchar(50) PRIMARY KEY,
+cardId varchar(25),
 faceValue decimal(9,2),
 frozenValue decimal(9,2),
 balanceValue decimal(9,2),
 comments VARCHAR(500)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `admin_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE `admin_user` (
   `roles` varchar(500) DEFAULT NULL,
   UNIQUE KEY `uq_unique_login_name` (`user_name`) USING BTREE,
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `admin_roles` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -67,7 +67,7 @@ CREATE TABLE `category` (
   `path_Str` varchar(500) DEFAULT '',
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `categoryId_UNIQUE` (`category_id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `product` (
@@ -78,7 +78,7 @@ CREATE TABLE `product` (
   `parent_category_id` bigint(20) DEFAULT NULL,
   `on_shelf` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `sku` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -91,4 +91,4 @@ CREATE TABLE `sku` (
   `img` varchar(255) DEFAULT NULL COMMENT '商品图片',
   `img_detail` varchar(255) DEFAULT NULL COMMENT '商品详情图片',
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
