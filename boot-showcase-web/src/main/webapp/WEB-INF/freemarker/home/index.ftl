@@ -1,5 +1,4 @@
-
-<@layout.defaultLayout title="首页" css="static/css/sample.css" js="static/js/home/index.js">
+<@layout.defaultLayout title="首页" requires="bootbox,/static/js/index.js">
 <body>
 <div class="cover">
     <div class="navbar">
