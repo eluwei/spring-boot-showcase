@@ -59,8 +59,10 @@ management ship with a default user, `admin/admin`
 
 ###Web
 - 使用webjars依赖。[webjars官方](http://www.webjars.org/classic)
-`由于使用了jsp，需要设置IDE的 working_dir=$MODULE_DIR$`
+- 由于使用了jsp，IDEA用户需要设置 working_dir=$MODULE_DIR$` 
+![working dir设置](/docs/img/working-directory.jpg)
 - 设置了auto_import: "/layout/defaultLayout.ftl" as layout，无需在页面在import一次模板
+- 使用webjars & requireJS 管理js依赖 (参考defaultLayout.ftl, index.ftl, index.js)
 
 ###API
 start APIMain.java
