@@ -75,7 +75,7 @@
         </dependency>
         <!-- google kaptcha -->
         <dependency>
-            <groupId>com.google.kaptcha</groupId>
+            <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
         </dependency>
     </dependencies>
